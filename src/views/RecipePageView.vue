@@ -51,8 +51,9 @@ const model = null
 
     <!--************************************ Main Start *****************************************-->
     <v-main>
-      <v-sheet class="slide mx-auto" elevation="15" max-width="1200" color="#bfc1c2">
-        <v-slide-group v-model="model" class="pa-4" selected-class="bg-success" show-arrows>
+      <!-- <v-sheet class="slide mx-auto" elevation="15" max-width="1200" color="#bfc1c2">
+        <h3 class="text1 font-weight-medium px-4 pt-4">เมนูแนะนำ</h3>
+        <v-slide-group v-model="model" class="px-4 pb-4" selected-class="bg-success" show-arrows>
           <v-slide-group-item v-slot="{ isSelected, selectedClass }">
             <v-card
               class="card"
@@ -76,7 +77,17 @@ const model = null
             </v-card>
           </v-slide-group-item>
         </v-slide-group>
-      </v-sheet>
+      </v-sheet> -->
+      <h1 class="recommended-menu font-weight-medium px-4">เมนูแนะนำ</h1>
+      <v-carousel :show-arrows="false" color="white" cycle height="350">
+        <v-carousel-item
+          v-for="(item,i) in allRecipe"
+          :key="i"
+          :src="item.data.linkurl"
+          cover
+          @click="viewRecipeDetail(item.id)"
+        />
+      </v-carousel>
 
       <!--*************************************** รายการอาหาร ****************************************-->
    
@@ -125,6 +136,10 @@ const model = null
 .container{
   margin-top: 4rem;
   margin-bottom: 6rem;
+}
+.recommended-menu {
+  font-family: 'Pattaya', sans-serif;
+  font-size: 40px;
 }
 .text1 {
   font-family: 'Pattaya', sans-serif;
